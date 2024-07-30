@@ -1,0 +1,23 @@
+.entry {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .menu {
+    height: 100%;
+  }
+  .container {
+    max-height: calc(100vh - 62px);
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin: 10px 8px 0;
+  }
+  .footer {
+    height: 30px;
+    padding: 10px 50px;
+    text-align: center;
+  }
+}

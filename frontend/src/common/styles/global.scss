@@ -1,0 +1,36 @@
+html,
+body,
+#root {
+  height: 100%;
+  /*清浮动*/
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .clearfix {
+    display: block;
+  }
+}
+
+// 设置滚动条样式
+.ant-table-body {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #919191;
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
