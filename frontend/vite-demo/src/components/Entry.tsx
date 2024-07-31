@@ -12,6 +12,7 @@ import {
   UserOutlined,
   InfoCircleOutlined,
   SmileOutlined,
+  EditOutlined
 } from "@ant-design/icons";
 import React, { ReactNode, useRef } from "react";
 
@@ -51,6 +52,7 @@ const Entry: React.FC = () => {
     getItem("用户列表", "3", "/userList", <UserOutlined />),
     getItem("关于", "4", "/about", <InfoCircleOutlined />),
     getItem("账户", "5", "/account", <SmileOutlined />),
+    getItem("设计页面", "6", "/editor", <EditOutlined />),
   ];
 
   const defaultIndex = useRef(localStorage.getItem("routerPath") || "1");

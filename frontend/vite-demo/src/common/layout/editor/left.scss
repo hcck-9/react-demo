@@ -1,0 +1,40 @@
+.left {
+  .active {
+    background-color: aqua;
+  }
+  width: 200px;
+  display: flex;
+  .item-name {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    .item-icon {
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  .components {
+    width: 150px;
+    .drag-item {
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+      color: #4b5563;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+      background-color: #f9fafb;
+      cursor: move;
+
+      &:hover {
+        background-color: #f3f4f6;
+        color: #1f2937;
+        border-color: #6366f1;
+      }
+
+      &.is-dragging {
+        opacity: 0.5;
+      }
+    }
+  }
+}
