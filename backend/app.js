@@ -5,12 +5,9 @@ const cors = require("cors"); //解决跨域问题
 app.use(cors());
 
 const bodyParser = require("body-parser");
-const multiparty = require("connect-multiparty");
-// 处理 x-www-form-urlencoded
+// // 处理 x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-// 处理 mutipart/form-data
-app.use(multiparty());
-// 处理 application/json
+// // 处理 application/json
 app.use(bodyParser.json());
 
 const { query } = require("./src/utils/database.js");

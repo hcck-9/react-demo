@@ -1,0 +1,117 @@
+.workBench {
+  .info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 24px;
+    margin-bottom: 15px;
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+    .promptInfo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 24px;
+      .top {
+        font-size: 20px;
+        margin-bottom: 9px;
+      }
+      .bottom {
+        font-size: 16px;
+        color: #918f8f;
+      }
+    }
+    .workInfo {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: right;
+      .todo {
+        p {
+          &:nth-child(1) {
+            font-size: 16px;
+            color: #918f8f;
+          }
+        }
+        .number {
+          font-size: 28px;
+        }
+      }
+      .middle {
+        margin: 0 60px;
+      }
+      .end {
+        margin-right: 50px;
+      }
+    }
+  }
+  .shortcut {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    .left,
+    .right {
+      box-sizing: border-box;
+      width: 70%;
+      margin-right: 20px;
+      .ant-card-body {
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .projectInfo {
+        &:hover {
+          box-shadow: 0 0 10px 0 #918f8f;
+          transition: all 0.5s;
+        }
+        width: 33.3333334%;
+        padding: 15px;
+        border: 0.5px solid #ececec;
+        .logo {
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          span {
+            font-size: 18px;
+            margin-left: 16px;
+          }
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        p {
+          font-size: 14px;
+          color: #918f8f;
+        }
+        .dateInfo {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    .right {
+      width: 30%;
+      .projectInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+        span.title {
+          margin-top: 5px;
+          font-size: 14px;
+          color: #918f8f;
+        }
+      }
+    }
+  }
+}

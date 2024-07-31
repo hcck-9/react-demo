@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>调试算法的</title>
+  </head>
+  <body>
+    <script>
+      const strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
+      /**
+       * @param {number[]} height
+       * @return {number}
+       */
+      var groupAnagrams = function (strs) {
+        const map = new Map();
+        strs.forEach((str) => {
+          debugger;
+          const sortStr = str.split().sort().join();
+          if (map.has(sortStr)) {
+            const arr = map.get(sortStr);
+            arr.push(str);
+            map.set(sortStr, arr);
+          } else {
+            map.set(sortStr, [str]);
+          }
+        });
+        return [...map.values()];
+      };
+      console.log(groupAnagrams(strs));
+    </script>
+  </body>
+</html>
