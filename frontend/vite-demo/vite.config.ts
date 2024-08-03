@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
+// 引入原子CSS
+import UnoCSS from "unocss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +18,8 @@ export default defineConfig({
       },
       include: "**/*.svg",
     }),
+    // @ts-ignore
+    UnoCSS(),
   ],
   resolve: {
     alias: {

@@ -1,3 +1,46 @@
 .canvas {
   flex: 1;
+  padding: 1rem;
+  overflow-y: scroll;
+  background-color: #ebf4ff;
+
+  .canvas-inner {
+    margin: auto;
+    min-height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    position: relative;
+    transition: all 300ms;
+
+    &.mobile {
+      padding: 0.5rem;
+    }
+
+    &.desktop {
+      padding: 1.25rem;
+    }
+
+    .space-y-1 > * + * {
+      margin-top: 0.25rem;
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .drop-indicator {
+      border: 1px solid #6366f1;
+      margin: 0.25rem 0;
+    }
+  }
 }

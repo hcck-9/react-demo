@@ -4,7 +4,7 @@ import { CRAD } from "../ItemTypes";
 import { useDrag } from "react-dnd";
 import { v1 as uuid } from "uuid";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import { FieldNodeSchema } from "@/app/codeTreeSlice";
+import { FieldNodeSchema } from "@/store/slices/codeTree";
 import { FieldNode } from "../schema/types";
 
 export default function DragItem({
@@ -42,8 +42,11 @@ export default function DragItem({
     //     ],
     //   }));
     // }
+
     return {
       type: CRAD,
+      // 对象的话是描述被拖动数据的普通 JavaScript 对象。
+      // 函数的话，会在拖动操作开始时触发，并返回一个代表拖动操作的对象。如果返回 null，拖动操作将被取消。
       item: { data: { ...data, children } },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
@@ -51,14 +54,18 @@ export default function DragItem({
     };
   }, []);
 
+  // 隐藏浏览器绘制的拖动预览
   connectDragPreview(getEmptyImage());
 
   return (
     <div
       ref={dragRef}
-      className={cl("drag-item", {
-        "is-dragging": isDragging,
-      })}
+      className={cl(
+        "mb-1 p-2 border border-solid border-gray-400 text-center text-gray-600 shadow-sm rounded-sm bg-gray-50 cursor-move hover:bg-gray-100 hover:text-gray-900 hover:border-indigo-500",
+        {
+          "opacity-50": isDragging,
+        }
+      )}
     >
       {data.type}
     </div>

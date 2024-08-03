@@ -1,9 +1,10 @@
 import Mock from "mockjs";
 
 const domain = "/api/";
-Mock.setup({
-  timeout: "1000-3000", //表示响应时间介于 200 和 600 毫秒之间。默认值是'10-100'。
-});
+// 加上这个就有个redux初始值没渲染的问题
+// Mock.setup({
+//   timeout: "100-300", //表示响应时间介于 200 和 600 毫秒之间。默认值是'10-100'。
+// });
 // 模拟login接口
 Mock.mock(domain + "login", function () {
   let result = {

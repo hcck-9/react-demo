@@ -15,8 +15,3 @@ export default function DragPanel({ data }: Props): ReactElement {
     </div>
   );
 }
-
-// const DragPanel = () => {
-//   return <div>DragPanel</div>;
-// };
-// export default DragPanel;

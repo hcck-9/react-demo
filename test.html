@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const nums = [1, 2, 3];
+
+      var subsets = function (nums) {
+        const res = [];
+        const helper = (start, path) => {
+          debugger;
+          if (start === nums.length) {
+            res.push(path.slice());
+            return;
+          }
+          // 选1
+          path.push(nums[start]);
+          helper(start + 1, path);
+          // 不选1
+          path.pop();
+          // 选2 、 3
+          helper(start + 1, path);
+        };
+        helper(0, []);
+        return res;
+      };
+      console.log(subsets(nums));
+    </script>
+  </body>
+</html>

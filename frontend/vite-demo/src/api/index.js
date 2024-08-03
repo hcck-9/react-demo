@@ -52,7 +52,7 @@ export const apiReqs = {
           window.localStorage.setItem(
             SESSION_LOGIN_INFO,
             JSON.stringify({
-              uid: result.data.loginUid,
+              loginUid: result.data.loginUid,
               nickname: result.data.nickname,
               token: result.data.token,
               avaUrl: result.data.avaUrl,

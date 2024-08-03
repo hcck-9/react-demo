@@ -10,6 +10,10 @@ const sessionTheme = JSON.parse(
 const initTheme =
   sessionTheme || sessionTheme !== "{}" ? sessionTheme : globalConfig.initTheme;
 
+document.getElementsByTagName("html")[0].className = initTheme.dark
+  ? "dark"
+  : "";
+
 //该store分库的初始值
 const initialState = {
   dark: initTheme.dark,
@@ -32,6 +36,9 @@ export const themeSlice = createSlice({
         globalConfig.SESSION_LOGIN_THEME,
         JSON.stringify(state)
       );
+      document.getElementsByTagName("html")[0].className = state.dark
+        ? "dark"
+        : "";
     },
     // redux方法：设置主题色
     setColorPrimary: (state, action) => {

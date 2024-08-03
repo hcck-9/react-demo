@@ -9,6 +9,7 @@ import { ConfigProvider } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import "@/common/styles/app.css";
 import "./mock";
+import "virtual:uno.css";
 // import "./setupProxy";
 
 // console.log(router);

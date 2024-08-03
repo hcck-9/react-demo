@@ -11,7 +11,7 @@ import Analysis from "@/pages/Analysis";
 import UserList from "@/pages/UserList";
 import Setting from "@/pages/Setting";
 import WorkBench from "@/pages/Workbench";
-import Editor from "@/pages/Editor"
+import Editor from "@/pages/Editor";
 
 const router = createHashRouter([
   {
@@ -43,12 +43,12 @@ const router = createHashRouter([
         element: <UserList />,
       },
       {
-        path: "/about",
-        element: <Setting />,
-      },
-      {
         path: "/editor",
         element: <Editor />,
+      },
+      {
+        path: "/about",
+        element: <Setting />,
       },
       {
         // 如果URL没有"#路由"，跳转analysis页面

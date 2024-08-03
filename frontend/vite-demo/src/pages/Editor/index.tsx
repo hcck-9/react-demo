@@ -29,7 +29,7 @@ const Editor = () => {
         <Card style={{ width: "100%", flex: 1 }}>
           <main className="main">
             <Left />
-            <Canvas />
+            <Canvas mobile={false} />
             <Right />
           </main>
         </Card>

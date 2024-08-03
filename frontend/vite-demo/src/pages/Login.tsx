@@ -3,7 +3,7 @@ import { Button, Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { apiReqs } from "@/api";
 
-import imgLogo from "@/logo.svg";
+import ImgLogo from "@/assets/svgs/react.svg";
 import "@/common/layout/login.scss";
 import { useState } from "react";
 
@@ -27,7 +27,8 @@ const Login = () => {
 
   return (
     <div className="login">
-      <img src={imgLogo} alt="" className="logo" />
+      {/* @ts-ignore */}
+      <ImgLogo className="logo" />
       <div className="ipt-con">
         <Input
           placeholder="账号"

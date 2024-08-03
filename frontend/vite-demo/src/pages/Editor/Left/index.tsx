@@ -14,19 +14,22 @@ const Left = () => {
   const fields = menus.find((menu) => menu.key === type);
   return (
     <div
-      className="left"
+      className="w-50 flex"
       style={{
         color: token.colorText,
       }}
     >
-      <div className="item-name">
+      <div className="w-20 overscroll-y-auto flex flex-col items-center">
         {menus.map((menu) => {
           return (
             <div
               key={menu.key}
-              className={cs("item-name", {
-                active: type === menu.key,
-              })}
+              className={cs(
+                "py-5 cursor-pointer w-15 border-transparent border-r-4 hover:bg-indigo-50 text-align-center",
+                {
+                  "bg-indigo-50 shadow dark:bg-blue": type === menu.key,
+                }
+              )}
               onClick={() => setType(menu.key)}
             >
               {menu.key}
@@ -34,7 +37,9 @@ const Left = () => {
           );
         })}
       </div>
-      <div className="components">{fields?.panel}</div>
+      <div className="w-30 overscroll-y-auto p-2 space-y-2 border-r border-l border-gray-200">
+        {fields?.panel}
+      </div>
     </div>
   );
 };
