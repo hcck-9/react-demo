@@ -1,6 +1,5 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/app/hooks";
 import { append, moveCom, FieldNodeSchema } from "@/store/slices/codeTree";
 import { TREEITEM } from "../ItemTypes";
 import { useDrop } from "react-dnd";
@@ -30,7 +29,6 @@ export default function TreePanel() {
       if (didDrop) {
         return;
       }
-
       //没有id 是新增,有id是移动
       if (!item.data.id) {
         dispatch(append(item.data));
@@ -63,8 +61,9 @@ export default function TreePanel() {
           <Item parentId={state.id} index={index} data={sub} key={sub.id} />
         ))}
       </ul>
+      {/* 是不是在最下面的外层 */}
       {isOver && canDrop ? (
-        <div className="border-indigo-600 bg-indigo-50 border h-7" />
+        <div className="border-indigo-600 bg-indigo-50 border border-solid h-7" />
       ) : null}
     </div>
   );

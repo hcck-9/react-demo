@@ -117,7 +117,7 @@ export const codeTreeSlice = createSlice({
         //非嵌套标签往父层插入，顶层元素
         if (isParentNode(hoverData.type) && sub.id === hoverData.id) {
           if (sub.children) {
-            sub.children.push({
+            sub.children.unshift({
               ...dragData,
               id: focusId,
             });
