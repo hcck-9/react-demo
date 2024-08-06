@@ -7,12 +7,11 @@ const previewFields = {
   div: (props: any) => <div {...props} />,
   // eslint-disable-next-line jsx-a11y/heading-has-content
   h1: (props: any) => <h1 {...props} />,
-  p: (props: any) => <p {...props} />,
-  span: (props: any) => <span>{props.children}</span>,
+  span: (props: any) => <span {...props}>{props.children}</span>,
   Link: (props: any) => <a {...props} />,
   // eslint-disable-next-line @next/next/no-img-element
   img: (props: any) => <img {...props} alt="" />,
-  input: (props: any) => <input {...props} />,
+  input: (props: any) => <input type="text" {...props} />,
   select: ({ children, ...other }: { children: Option[] }) => (
     <select {...other}>
       {children.map((option) =>

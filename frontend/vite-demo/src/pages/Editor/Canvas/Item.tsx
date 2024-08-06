@@ -156,8 +156,9 @@ export default function Item({ data, parentId, index }: Props) {
   };
   const current = <CurrentTag {...data.props} />;
 
+  // 这是当前聚焦的元素的classname
   const className = cl(
-    "min-h-10 p-1 border m-y-1 border-blue border-dashed relative",
+    "min-h-7.5 p-1 border m-y-1 border-blue border-dashed relative",
     {
       "border-opacity-2": isDragging,
       "outline-solid outline-#4f46e5 border-opacity-1 border-0":
@@ -190,28 +191,51 @@ export default function Item({ data, parentId, index }: Props) {
     </span>
   );
 
-  return (
-    <div onClick={handleFocus} className={className} ref={ref}>
+  const renderChildren = (data: any) => {
+    if (!isParentNode(data.type)) {
+      return data.props.children;
+    }
+    return (
+      data.children &&
+      data.children.map((sub: any, index: number) => (
+        <Item parentId={data.id} index={index} data={sub} key={sub.id} />
+      ))
+    );
+  };
+
+  const upAndDownItem = (
+    <>
       {state.focusId === data.id && action}
       {/* 上面的是这个 */}
       {isOver && canDrop && !positionDown ? (
         <div className="border-indigo-600 border border-solid" />
       ) : null}
-      <CurrentTag {...data.props}>
-        {/* 渲染当前元素的标签，传入所有属性 */}
-        {/* 如果不是父节点，直接渲染其子节点 */}
-        {/* 如果是父节点，则递归渲染其子节点 */}
-        {!isParentNode(data.type)
-          ? data.props.children
-          : data.children &&
-            data.children.map((sub, index) => (
-              <Item parentId={data.id} index={index} data={sub} key={sub.id} />
-            ))}
-      </CurrentTag>
-      {/* 上下两条线，下面的是这个 */}
+      {/* 渲染当前元素的标签，传入所有属性 */}
+      {/* 如果不是父节点，直接渲染其子节点 */}
+      {/* 如果是父节点，则递归渲染其子节点 */}
+      {data.type !== "div" ? (
+        <CurrentTag {...data.props}>{renderChildren(data)}</CurrentTag>
+      ) : (
+        renderChildren(data)
+      )}
       {isOver && canDrop && positionDown ? (
         <div className="border-red-600 border border-solid" />
       ) : null}
+    </>
+  );
+
+  return data.type !== "div" ? (
+    <div onClick={handleFocus} className={className} ref={ref}>
+      {upAndDownItem}
+    </div>
+  ) : (
+    <div
+      onClick={handleFocus}
+      ref={ref}
+      {...data.props}
+      className={cl(className, data.props?.className)}
+    >
+      {upAndDownItem}
     </div>
   );
 }

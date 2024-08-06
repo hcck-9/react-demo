@@ -6,29 +6,28 @@
     <title>Document</title>
   </head>
   <body>
+    <div>
+      <input type="text" />
+    </div>
     <script>
       const nums = [1, 2, 3];
 
-      var subsets = function (nums) {
+      var generate = function (numRows) {
+        // debugger;
         const res = [];
-        const helper = (start, path) => {
-          debugger;
-          if (start === nums.length) {
-            res.push(path.slice());
-            return;
+        for (let i = 1; i <= numRows; i++) {
+          const arr = new Array(i).fill(1);
+          if (i > 2) {
+            for (let j = 1; j < arr.length - 1; j++) {
+              console.log(res[i - 2]);
+              arr[j] = res[i - 1][j - 1] + res[i - 1][j];
+            }
           }
-          // 选1
-          path.push(nums[start]);
-          helper(start + 1, path);
-          // 不选1
-          path.pop();
-          // 选2 、 3
-          helper(start + 1, path);
-        };
-        helper(0, []);
+          res.push(arr);
+        }
         return res;
       };
-      console.log(subsets(nums));
+      console.log(generate(5));
     </script>
   </body>
 </html>

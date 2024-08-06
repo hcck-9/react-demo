@@ -18,14 +18,14 @@ const menus: {
     key: "basic",
     panel: <DragPanel data={basic} />,
   },
+  {
+    key: "antd",
+    panel: <DragPanel data={antd} />,
+  },
   // // 后面三个都可以合并，合并为这个树形结构
   // {
   //   key: "basic",
   //   panel: <DragPanel data={basic} />,
-  // },
-  // {
-  //   key: "antd",
-  //   panel: <DragPanel data={antd} />,
   // },
   // {
   //   key: "components",

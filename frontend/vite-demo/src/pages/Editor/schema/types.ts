@@ -1,4 +1,4 @@
-// import { fields } from "../Right/fields";
+import { fields } from "../Right/fields";
 import preview from "./preview/index";
 
 export interface FieldNode {
@@ -9,8 +9,8 @@ export interface FieldNode {
   props: Record<string, any>;
 }
 
-// export interface Field extends Record<string, any> {
-//   key: string;
-//   name: string;
-//   type: keyof typeof fields;
-// }
+export interface Field extends Record<string, any> {
+  key: string;
+  name: string;
+  type: keyof typeof fields;
+}

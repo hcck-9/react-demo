@@ -1,6 +1,7 @@
 import { FieldNode } from "../types";
 
 const fields: FieldNode[] = [
+  // 这里添加的是value的默认值
   {
     type: "div",
     props: {
@@ -10,16 +11,15 @@ const fields: FieldNode[] = [
   {
     type: "h1",
     props: {
-      className: "text-3xl",
+      className: "text-2xl",
       children: "H1",
     },
   },
-
   {
-    type: "p",
+    type: "span",
     props: {
       className: "",
-      children: "段落111",
+      children: "默认文字",
     },
   },
   {
@@ -52,12 +52,6 @@ const fields: FieldNode[] = [
       width: "100",
       height: "100",
       src: "https://www.baidu.com/img/PCpad_012830ebaa7e4379ce9a9ed1b71f7507.png",
-    },
-  },
-  {
-    type: "span",
-    props: {
-      children: "文本",
     },
   },
   {

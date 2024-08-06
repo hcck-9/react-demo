@@ -10,9 +10,13 @@ import zhCN from "antd/locale/zh_CN";
 import "@/common/styles/app.css";
 import "./mock";
 import "virtual:uno.css";
+import { globalConfig } from "./globalConfig";
 // import "./setupProxy";
 
-// console.log(router);
+// window.addEventListener("unload", () => {
+//   localStorage.removeItem(globalConfig.SESSION_LOGIN_INFO);
+//   localStorage.removeItem("routerPath");
+// });
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

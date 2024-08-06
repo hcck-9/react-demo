@@ -81,7 +81,7 @@ const Canvas = ({ mobile }: Props) => {
   }));
 
   return (
-    <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50">
+    <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50 min-w-sm">
       <div
         ref={drop}
         style={{ width: mobile ? 375 : "auto" }}

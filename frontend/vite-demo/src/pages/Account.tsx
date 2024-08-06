@@ -2,6 +2,7 @@ import { Button, theme, Modal } from "antd";
 import { logout } from "@/api";
 import "@/common/layout/account.scss";
 import { useNavigate } from "react-router-dom";
+import cl from "classnames";
 
 const { useToken } = theme;
 
@@ -20,6 +21,22 @@ const Account = () => {
         logout();
       },
     });
+  };
+
+  const ReturnDiv = (props): any => {
+    console.log(props);
+
+    return <div {...props} />;
+  };
+
+  const obj = {
+    className: "bg-red",
+    title: "div",
+  };
+
+  const data = {
+    content: "h1",
+    children: [],
   };
   return (
     <div className="account">
@@ -45,6 +62,9 @@ const Account = () => {
           返回登录
         </Button>
       </div>
+      <ReturnDiv {...data} className={cl(obj?.className, "bg-sky")}>
+        {data.content}
+      </ReturnDiv>
     </div>
   );
 };
