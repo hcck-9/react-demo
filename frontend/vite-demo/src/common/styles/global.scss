@@ -34,3 +34,13 @@ body,
   background: #919191;
   -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
 }
+
+.ant-form-item {
+  margin-bottom: 0;
+}
+
+.ant-form-item .ant-form-item-label {
+  label {
+    height: 100%;
+  }
+}

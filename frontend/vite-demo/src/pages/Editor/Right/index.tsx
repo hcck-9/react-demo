@@ -73,15 +73,17 @@ const Right = () => {
   };
 
   return (
-    <div className="min-w-50 overflow-y-scroll border-l border-0 border-gray-200 space-y-2 border-solid flex flex-col">
+    <div className="min-w-75 overflow-y-scroll border-l border-0 border-gray-200 space-y-2 border-solid flex flex-col">
       <div className="flex-shrink-0 h-10 leading-10 px-3 border-0 text-indigo-600 border-b border-solid  border-gray-200 font-medium">
         属性设置
       </div>
       <div className="p-2 flex-1">
         {focusComponent ? (
+          // schema 下 edit 里面的数据
           editFields[focusComponent.type].map((item) => {
+            // console.log("item", item);
+
             const { key, name, type, ...other } = item;
-            // console.log("style", item);
             return (
               <div className="" key={key}>
                 <div>{name}:</div>

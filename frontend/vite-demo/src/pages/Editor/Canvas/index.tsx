@@ -46,7 +46,7 @@ const Canvas = ({ mobile }: Props) => {
     accept: CRAD,
     // 当拖拽物在这个拖放区域放下时触发,这个item就是拖拽物的item（拖拽物携带的数据）
     drop: (item, monitor) => {
-      console.log("item", item);
+      // console.log("item", item);
 
       // monitor 记录了拖放区域内拖拽物状态信息
       // didDrop()	如果拖放区域执行drop()操作，返回true
@@ -95,7 +95,13 @@ const Canvas = ({ mobile }: Props) => {
       >
         {state?.children?.map((sub, index) => {
           return (
-            <Item parentId={state.id} index={index} data={sub} key={sub.id} />
+            <Item
+              parentId={state.id}
+              index={index}
+              data={sub}
+              key={sub.id}
+              parentIsFormItem={state.type === "Form.Item"}
+            />
           );
         })}
         {!state?.children?.length ? (
@@ -107,6 +113,7 @@ const Canvas = ({ mobile }: Props) => {
         {isOver && canDrop ? (
           <div className="border-indigo-500 border border-solid my-1" />
         ) : null}
+        {/* 拖拽层组件，显示拖拽的是什么元素的 */}
         <CustomDragLayer />
       </div>
     </div>

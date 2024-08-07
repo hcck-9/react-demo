@@ -21,6 +21,7 @@ interface Props {
   data: FieldNodeSchema;
   parentId: string;
   index: number;
+  parentIsFormItem: boolean;
 }
 
 interface DragData {
@@ -34,7 +35,12 @@ interface CollectedProps {
   isOver: boolean;
 }
 
-export default function Item({ data, parentId, index }: Props) {
+export default function Item({
+  data,
+  parentId,
+  index,
+  parentIsFormItem,
+}: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [positionDown, setPosition] = useState(true);
 
@@ -44,6 +50,8 @@ export default function Item({ data, parentId, index }: Props) {
     () => ({
       accept: CRAD,
       drop: (item, monitor) => {
+        // Todo -- form.item 必须放在 form 里面
+        // 其次就是 form.item 要有具体的子类型，例如前面的input就算是其子节点
         if (monitor.didDrop()) {
           return;
         }
@@ -166,6 +174,7 @@ export default function Item({ data, parentId, index }: Props) {
       "inline-block": ["a", "span", "button", "b", "i"].includes(
         current.type.name
       ),
+      "border-0": parentIsFormItem,
     }
   );
 
@@ -198,7 +207,13 @@ export default function Item({ data, parentId, index }: Props) {
     return (
       data.children &&
       data.children.map((sub: any, index: number) => (
-        <Item parentId={data.id} index={index} data={sub} key={sub.id} />
+        <Item
+          parentId={data.id}
+          index={index}
+          data={sub}
+          key={sub.id}
+          parentIsFormItem={data.type === "Form.Item"}
+        />
       ))
     );
   };

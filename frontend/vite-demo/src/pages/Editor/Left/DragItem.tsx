@@ -24,24 +24,24 @@ export default function DragItem({
     //     },
     //   }));
     // }
-    // if (type === "Form") {
-    //   children = new Array(3).fill("1").map((it, i) => ({
-    //     id: uuid(),
-    //     type: "Form.Item",
-    //     props: {
-    //       name: "field" + i,
-    //       label: "field" + i,
-    //     },
-    //     children: [
-    //       {
-    //         type: "Input",
-    //         id: uuid(),
-    //         module: "antd",
-    //         props: {},
-    //       },
-    //     ],
-    //   }));
-    // }
+    if (type === "Form") {
+      children = new Array(1).fill("1").map((it, i) => ({
+        id: uuid(),
+        type: "Form.Item",
+        props: {
+          name: "field" + i,
+          label: "field" + i,
+        },
+        children: [
+          {
+            type: "Input",
+            id: uuid(),
+            module: "antd",
+            props: {},
+          },
+        ],
+      }));
+    }
 
     return {
       type: CRAD,

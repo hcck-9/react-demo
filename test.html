@@ -10,24 +10,32 @@
       <input type="text" />
     </div>
     <script>
-      const nums = [1, 2, 3];
+      const nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1];
 
-      var generate = function (numRows) {
-        // debugger;
-        const res = [];
-        for (let i = 1; i <= numRows; i++) {
-          const arr = new Array(i).fill(1);
-          if (i > 2) {
-            for (let j = 1; j < arr.length - 1; j++) {
-              console.log(res[i - 2]);
-              arr[j] = res[i - 1][j - 1] + res[i - 1][j];
-            }
+      var longestConsecutive = function (nums) {
+        if (!nums.length) return 0;
+        const map = new Map();
+        let max = 0;
+        nums.forEach((num) => {
+          if (!map.has(num)) {
+            map.set(num, num);
           }
-          res.push(arr);
+        });
+        let ans = 0;
+        debugger;
+        for (let i = 0; i < nums.length; i++) {
+          let flag = map.has(nums[i]);
+          let num = map.get(nums[i]);
+          while (flag) {
+            flag = map.has(--num);
+            ans++;
+            max = Math.max(max, ans);
+          }
+          ans = 0;
         }
-        return res;
+        return max;
       };
-      console.log(generate(5));
+      console.log(longestConsecutive(nums));
     </script>
   </body>
 </html>

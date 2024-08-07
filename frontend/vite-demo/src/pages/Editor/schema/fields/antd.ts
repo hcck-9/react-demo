@@ -24,8 +24,8 @@ const fields: FieldNode[] = [
     module: "antd",
     props: {
       options: [
-        { value: "man", label: "man" },
-        { value: "woman", label: "woman" },
+        { key: "1", value: "man", label: "man" },
+        { key: "2", value: "woman", label: "woman" },
       ],
     },
   },
@@ -83,11 +83,9 @@ const fields: FieldNode[] = [
     module: "antd",
     displayName: "进度条组件",
     props: {
-      theme: "success",
+      status: "success",
       type: "circle",
-      size: 200,
       percent: 30,
-      strokeWidth: 10,
     },
   },
 ];

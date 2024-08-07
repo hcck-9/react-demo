@@ -10,7 +10,7 @@ const Left = () => {
   // 获取主题token设置
   const { token } = useToken();
 
-  const [type, setType] = useState("basic");
+  const [type, setType] = useState("antd");
   const fields = menus.find((menu) => menu.key === type);
   return (
     <div

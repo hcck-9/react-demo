@@ -1,48 +1,49 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
-import { Table, Input, Button, Popconfirm, Form } from 'antd'
-import { FormInstance } from 'antd/lib/form'
+import React, { useContext, useState, useEffect, useRef } from "react";
+import { Table, Input, Button, Popconfirm, Form, InputRef } from "antd";
+import { FormInstance } from "antd/lib/form";
+import { count } from "console";
 
-const EditableContext = React.createContext<FormInstance<any> | null>(null)
+const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 interface DataType {
-  key: React.Key
-  [key: string]: any
+  key: React.Key;
+  [key: string]: any;
 }
 type EditableTableProps = {
-  columns: any[]
-  value: DataType[]
-  onChange: (v: DataType[]) => void
-}
+  columns: any[];
+  value: DataType[];
+  onChange: (v: DataType[]) => void;
+};
 
 interface EditableTableState {
-  dataSource: DataType[]
-  count: number
+  dataSource: DataType[];
+  count: number;
 }
 
-type ColumnTypes = EditableTableProps['columns']
+type ColumnTypes = EditableTableProps["columns"];
 
 interface EditableRowProps {
-  index: number
+  index: number;
 }
 
 const EditableRow: React.FC<EditableRowProps> = ({ index, ...props }) => {
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
   return (
     <Form form={form} component={false}>
       <EditableContext.Provider value={form}>
         <tr {...props} />
       </EditableContext.Provider>
     </Form>
-  )
-}
+  );
+};
 
 interface EditableCellProps {
-  title: React.ReactNode
-  editable: boolean
-  children: React.ReactNode
-  dataIndex: keyof DataType
-  record: DataType
-  handleSave: (record: DataType) => void
+  title: React.ReactNode;
+  editable: boolean;
+  children: React.ReactNode;
+  dataIndex: keyof DataType;
+  record: DataType;
+  handleSave: (record: DataType) => void;
 }
 
 const EditableCell: React.FC<EditableCellProps> = ({
@@ -54,38 +55,38 @@ const EditableCell: React.FC<EditableCellProps> = ({
   handleSave,
   ...restProps
 }) => {
-  const [editing, setEditing] = useState(false)
-  const inputRef = useRef<Input>(null)
-  const form = useContext(EditableContext)!
+  const [editing, setEditing] = useState(false);
+  const inputRef = useRef<InputRef>(null);
+  const form = useContext(EditableContext)!;
 
   useEffect(() => {
     if (editing) {
-      inputRef.current!.focus()
+      inputRef.current!.focus();
     }
-  }, [editing])
+  }, [editing]);
 
   const toggleEdit = () => {
-    setEditing(!editing)
-    form.setFieldsValue({ [dataIndex]: record[dataIndex] })
-  }
+    setEditing(!editing);
+    form.setFieldsValue({ [dataIndex]: record[dataIndex] });
+  };
 
   const save = async () => {
     try {
-      const values = await form.validateFields()
+      const values = await form.validateFields();
 
-      toggleEdit()
-      handleSave({ ...record, ...values })
+      toggleEdit();
+      handleSave({ ...record, ...values });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo)
+      console.log("Save failed:", errInfo);
     }
-  }
+  };
 
-  let childNode = children
+  let childNode = children;
 
   if (editable) {
     childNode = editing ? (
       <Form.Item
-        style={{ margin: 0 }}
+        style={{ margin: 0, width: "100px" }}
         name={dataIndex}
         rules={[
           {
@@ -94,81 +95,80 @@ const EditableCell: React.FC<EditableCellProps> = ({
           },
         ]}
       >
-        <Input
-          className="w-full"
-          ref={inputRef}
-          onPressEnter={save}
-          onBlur={save}
-        />
+        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
       </Form.Item>
     ) : (
       <div className="editable-cell-value-wrap" onClick={toggleEdit}>
         {children}
       </div>
-    )
+    );
   }
-
-  return <td {...restProps}>{childNode}</td>
-}
+  return <td {...restProps}>{childNode}</td>;
+};
 
 class EditableTable extends React.Component<
   EditableTableProps,
   EditableTableState
 > {
   constructor(props: EditableTableProps) {
-    super(props)
+    super(props);
 
     this.state = {
       dataSource: props.value,
       count: props.value.length,
-    }
+    };
   }
 
   handleDelete = (key: React.Key) => {
     const dataSource = [...this.state.dataSource].filter(
       (item) => item.key !== key
-    )
-    this.setState({ dataSource })
-    this.props.onChange(dataSource)
-  }
+    );
+    console.log("data", this.state.dataSource, key);
+
+    this.setState({ dataSource: dataSource, count: dataSource.length });
+    this.props.onChange(dataSource);
+  };
 
   handleAdd = () => {
-    const { count, dataSource } = this.state
+    const { count, dataSource } = this.state;
+
     const newData: DataType = {
-      key: count,
-    }
-    const value = [...dataSource, newData]
+      ...dataSource?.[count - 1],
+      key: Math.random().toString().slice(-5),
+      value:
+        dataSource?.[count - 1]?.value + Math.random().toString().slice(-1),
+    };
+    const value = [...dataSource, newData];
     this.setState({
       dataSource: value,
       count: count + 1,
-    })
-
-    this.props.onChange(value)
-  }
+    });
+    this.props.onChange(value);
+  };
 
   handleSave = (row: DataType) => {
-    const newData = [...this.state.dataSource]
-    const index = newData.findIndex((item) => row.key === item.key)
-    const item = newData[index]
+    const newData = [...this.state.dataSource];
+    const index = newData.findIndex((item) => row.key === item.key);
+    const item = newData[index];
     newData.splice(index, 1, {
       ...item,
       ...row,
-    })
-    this.setState({ dataSource: newData })
-    this.props.onChange(newData)
-  }
+    });
+    this.setState({ dataSource: newData });
+    this.props.onChange(newData);
+  };
 
   render() {
-    const { dataSource } = this.state
+    const { dataSource } = this.state;
     const components = {
       body: {
         row: EditableRow,
         cell: EditableCell,
       },
-    }
+    };
     const columns = this.props.columns.map((col) => {
       if (!col.editable) {
-        return col
+        return col;
       }
       return {
         ...col,
@@ -179,11 +179,11 @@ class EditableTable extends React.Component<
           title: col.title,
           handleSave: this.handleSave,
         }),
-      }
-    })
+      };
+    });
     columns.push({
-      title: '',
-      dataIndex: 'operation',
+      title: "",
+      dataIndex: "operation",
       render: (_: any, record: { key: React.Key }) =>
         this.state.dataSource.length >= 1 ? (
           <Popconfirm
@@ -208,23 +208,24 @@ class EditableTable extends React.Component<
             </a>
           </Popconfirm>
         ) : null,
-    })
+    });
     return (
       <div>
         <Table
+          bordered
           pagination={false}
           size="small"
           components={components}
-          rowClassName={() => 'editable-row'}
+          rowClassName={() => "editable-row"}
           dataSource={dataSource}
           columns={columns as ColumnTypes}
         />
         <Button type="primary" className="mt-2" block onClick={this.handleAdd}>
-          Add
+          增加
         </Button>
       </div>
-    )
+    );
   }
 }
 
-export default EditableTable
+export default EditableTable;

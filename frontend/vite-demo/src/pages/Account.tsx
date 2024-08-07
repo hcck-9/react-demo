@@ -1,4 +1,4 @@
-import { Button, theme, Modal } from "antd";
+import { Button, theme, Modal, Form, Input, Radio, Progress } from "antd";
 import { logout } from "@/api";
 import "@/common/layout/account.scss";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +65,10 @@ const Account = () => {
       <ReturnDiv {...data} className={cl(obj?.className, "bg-sky")}>
         {data.content}
       </ReturnDiv>
+      <Form.Item label="name">
+        <Input placeholder="input name'" />
+      </Form.Item>
+      <Progress percent={30} type="line" />
     </div>
   );
 };
