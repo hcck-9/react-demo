@@ -17,7 +17,7 @@ export default defineConfig({
         svgo: true,
         titleProp: true,
       },
-      include: "**/*.svg",
+      include: ["**/*.svg", "**/*.svg?react"],
     }),
   ],
   resolve: {
@@ -31,5 +31,14 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 8 * 1024,
+  },
+  server: {
+    proxy: {
+      "/api/": {
+        target: "http://127.0.0.1:9600/",
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });

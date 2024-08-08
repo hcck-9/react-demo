@@ -8,7 +8,7 @@ import { ConfigProvider } from "antd";
 // 引入Ant Design中文语言包
 import zhCN from "antd/locale/zh_CN";
 import "@/common/styles/app.css";
-import "./mock";
+// import "./mock";
 import "virtual:uno.css";
 import { globalConfig } from "./globalConfig";
 // import "./setupProxy";

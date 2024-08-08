@@ -25,6 +25,20 @@ app.get("/getUser", (req, res) => {
   });
 });
 
+//一个简单的接口，查询数据库中的信息
+app.post("/api/component", (req, res) => {
+  // let sql = "select * from user";
+  // query(sql).then((result) => {
+  //   res.send(result);
+  // });
+  // console.log(req.body);
+  res.send({
+    code: 0,
+    success: true,
+    data: req.body,
+  });
+});
+
 //监听node服务器的端口号
 app.listen(9600, () => {
   console.log("恭喜你，服务器启动成功");
