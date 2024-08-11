@@ -59,3 +59,12 @@ Mock.mock(domain + "getUserList", "get", () => {
   };
   return result;
 });
+
+Mock.mock(domain + "component", "post", (req) => {
+  let result = {
+    code: 0,
+    success: true,
+    data: req.body,
+  };
+  return result;
+});

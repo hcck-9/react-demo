@@ -10,6 +10,7 @@ import cl from "classnames";
 import Computer from "@/assets/svgs/computer.svg?react";
 import Phone from "@/assets/svgs/phone.svg?react";
 import SaveBtn from "./SaveBtn";
+import ShowCodeBtn from "./ShowCodeBtn";
 
 const { useToken } = theme;
 
@@ -46,7 +47,7 @@ const Editor = () => {
                   })}
                 />
               </div>
-              {/* <ShowCodeBtn /> */}
+              <ShowCodeBtn />
               <SaveBtn />
             </div>
           </header>
