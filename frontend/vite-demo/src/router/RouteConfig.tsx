@@ -12,6 +12,7 @@ import UserList from "@/pages/UserList";
 import Setting from "@/pages/Setting";
 import WorkBench from "@/pages/Workbench";
 import Editor from "@/pages/Editor";
+import SortableJS from "@/pages/Sortable";
 
 const router = createHashRouter([
   {
@@ -49,6 +50,10 @@ const router = createHashRouter([
       {
         path: "/about",
         element: <Setting />,
+      },
+      {
+        path: "/sortablejs",
+        element: <SortableJS />,
       },
       {
         // 如果URL没有"#路由"，跳转analysis页面

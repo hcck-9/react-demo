@@ -53,6 +53,7 @@ const Entry: React.FC = () => {
     getItem("关于", "4", "/about", <InfoCircleOutlined />),
     getItem("设计页面", "5", "/editor", <EditOutlined />),
     getItem("账户", "6", "/account", <SmileOutlined />),
+    getItem("sortablejs demo", "7", "/sortablejs", <SmileOutlined />),
   ];
 
   const defaultIndex = useRef(localStorage.getItem("routerPath") || "1");

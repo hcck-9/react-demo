@@ -6,36 +6,33 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <input type="text" />
-    </div>
     <script>
-      const nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1];
+      var name = "window";
+      function Person(name) {
+        this.name = name;
+        this.obj = {
+          name: "obj",
+          foo1: function () {
+            return function () {
+              console.log(this.name);
+            };
+          },
+          foo2: function () {
+            return () => {
+              console.log(this.name);
+            };
+          },
+        };
+      }
+      var person1 = new Person("person1");
+      var person2 = new Person("person2");
 
-      var longestConsecutive = function (nums) {
-        if (!nums.length) return 0;
-        const map = new Map();
-        let max = 0;
-        nums.forEach((num) => {
-          if (!map.has(num)) {
-            map.set(num, num);
-          }
-        });
-        let ans = 0;
-        debugger;
-        for (let i = 0; i < nums.length; i++) {
-          let flag = map.has(nums[i]);
-          let num = map.get(nums[i]);
-          while (flag) {
-            flag = map.has(--num);
-            ans++;
-            max = Math.max(max, ans);
-          }
-          ans = 0;
-        }
-        return max;
-      };
-      console.log(longestConsecutive(nums));
+      person1.obj.foo1()(); // window
+      person1.obj.foo1.call(person2)(); // window
+      person1.obj.foo1().call(person2); // person2
+      person1.obj.foo2()(); // obj
+      person1.obj.foo2.call(person2)(); // person2
+      person1.obj.foo2().call(person2); // obj
     </script>
   </body>
 </html>
