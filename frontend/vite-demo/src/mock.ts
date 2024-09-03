@@ -12,7 +12,7 @@ Mock.mock(domain + "login", function () {
     message: "OK",
     data: {
       loginUid: 10000,
-      nickname: "兔子先生",
+      nickname: "兔子女士",
       token: "hh123",
       avaUrl: "/src/assets/images/6.jpg",
     },

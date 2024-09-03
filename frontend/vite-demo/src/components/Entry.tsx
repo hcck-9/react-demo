@@ -49,11 +49,11 @@ const Entry: React.FC = () => {
   const items: MenuItem[] = [
     getItem("分析报表", "1", "/analysis", <BarChartOutlined />),
     getItem("工作台", "2", "/workbench", <AppstoreOutlined />),
-    getItem("用户列表", "3", "/userList", <UserOutlined />),
+    // getItem("用户列表", "3", "/userList", <UserOutlined />),
     getItem("关于", "4", "/about", <InfoCircleOutlined />),
     getItem("设计页面", "5", "/editor", <EditOutlined />),
-    getItem("账户", "6", "/account", <SmileOutlined />),
-    getItem("sortablejs demo", "7", "/sortablejs", <SmileOutlined />),
+    // getItem("账户", "6", "/account", <SmileOutlined />),
+    // getItem("sortablejs demo", "7", "/sortablejs", <SmileOutlined />),
   ];
 
   const defaultIndex = useRef(localStorage.getItem("routerPath") || "1");

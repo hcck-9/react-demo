@@ -1,7 +1,13 @@
 import "@/common/layout/workBench.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import img from "@/assets/images/1.jpg";
+import img1 from "@/assets/images/1.jpg";
+import img2 from "@/assets/images/2.jpg";
+import img3 from "@/assets/images/3.jpg";
+import img4 from "@/assets/images/4.jpg";
+import img5 from "@/assets/images/5.jpg";
+import img6 from "@/assets/images/6.jpg";
+import img7 from "@/assets/images/7.jpg";
 import { Card } from "antd";
 import {
   AlipayCircleOutlined,
@@ -22,6 +28,7 @@ const WorkBench = () => {
       description: "不要等待机会，而要创造机会。",
       group: "开源组",
       date: "2021-04-01",
+      src: img1,
     },
     {
       key: 2,
@@ -29,6 +36,7 @@ const WorkBench = () => {
       description: "现在的你决定将来的你。",
       group: "算法组",
       date: "2021-04-01",
+      src: img4,
     },
     {
       key: 3,
@@ -36,6 +44,7 @@ const WorkBench = () => {
       description: "没有什么才能比努力更重要。",
       group: "上班摸鱼",
       date: "2021-04-01",
+      src: img3,
     },
     {
       key: 4,
@@ -43,6 +52,7 @@ const WorkBench = () => {
       description: "热情和欲望可以突破一切难关。",
       group: "UI",
       date: "2021-04-01",
+      src: img2,
     },
     {
       key: 5,
@@ -50,6 +60,7 @@ const WorkBench = () => {
       description: "健康的身体是实现目标的基石。",
       group: "技术牛",
       date: "2021-04-01",
+      src: img5,
     },
     {
       key: 6,
@@ -57,6 +68,7 @@ const WorkBench = () => {
       description: "路是走出来的，而不是空想出来的。",
       group: "架构组",
       date: "2021-04-01",
+      src: img7,
     },
   ];
 
@@ -103,7 +115,7 @@ const WorkBench = () => {
           backgroundColor: globalTheme.dark ? "#000" : "#fff",
         }}
       >
-        <img src={img} alt="" />
+        <img src={img6} alt="" />
         <div className="promptInfo">
           <div className="top">
             早安, {userinfo.nickname}, 开始您一天的工作吧！
@@ -145,7 +157,7 @@ const WorkBench = () => {
               return (
                 <div className="projectInfo" key={item.key}>
                   <div className="logo">
-                    <img src={img} alt="" />
+                    <img src={item.src} alt="" />
                     <span>{item.title}</span>
                   </div>
                   <p

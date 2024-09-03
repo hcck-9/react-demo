@@ -13,7 +13,7 @@ import type { RootState } from "@/store";
 import ThemeModal from "./ThemeModal";
 import { globalConfig } from "@/globalConfig";
 import "@/common/layout/header.scss";
-import img from "@/assets/images/1.jpg";
+import img from "@/assets/images/3.jpg";
 
 type PropsType = {
   title: string;
